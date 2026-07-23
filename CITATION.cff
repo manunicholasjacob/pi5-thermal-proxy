@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below."
+title: "A Software-Only Thermal Proxy for Edge AI Inference on Raspberry Pi 5"
+authors:
+  - family-names: "Jacob"
+    given-names: "Manu Nicholas"
+    orcid: "https://orcid.org/0009-0007-6589-6572"
+type: software
+repository-code: "https://github.com/manunicholasjacob/pi5-thermal-proxy"
+url: "http://manunicholasjacob.com/"
+version: "1.0.0"
+date-released: "2026-07-23"
