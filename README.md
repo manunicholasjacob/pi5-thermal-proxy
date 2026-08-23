@@ -1,5 +1,7 @@
 # A Software-Only Thermal Proxy for Edge AI Inference (Raspberry Pi 5)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21844859.svg)](https://doi.org/10.5281/zenodo.21844859)
+
 Reproducible artifact for **"CPU Utilization as a Software-Only Thermal Proxy for Multi-Tenant
 Edge AI Inference: A 13-Hour Characterization and Coupling Law on Raspberry Pi 5"**
 (submitted to IEEE Embedded Systems Letters).
@@ -47,3 +49,10 @@ python scripts/paper8_figs.py   # the figures
 
 ## Citation
 Manu Nicholas Jacob, IEEE Embedded Systems Letters, 2026. MIT License.
+
+## Archived version
+
+This artifact is archived on Zenodo. The concept DOI
+[10.5281/zenodo.21844859](https://doi.org/10.5281/zenodo.21844859)
+always resolves to the latest release, and `CITATION.cff` carries the full metadata,
+which is what GitHub's "Cite this repository" button renders.
