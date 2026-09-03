@@ -25,7 +25,14 @@ control with no power instrumentation.
 experiment block: single-workload characterization, load sweep, two-tenant concurrency, and a
 6-hour stability run. Columns include SoC temperature, per-core CPU utilization, and memory.
 
-> Scope note (stated in the paper): this deployment had **no power sensor** attached, so no board
+> **Data revision (Sep 2026).** Earlier versions of these Parquet files carried
+> `voltage_v`/`current_a`/`power_w` columns written by the collector as placeholders: no power
+> sensor was attached, and forensics show the values were a random stub (constant 5.0 V, zero
+> correlation with utilization or temperature, zero lag-1 autocorrelation). They contained no
+> measurement and have been removed (`scripts/strip_stub_power_columns.py`) so the dataset cannot
+> be mistaken for a power measurement. No analysis in the paper ever used them.
+>
+> Scope note (stated in the paper): this deployment read **no power sensor**, so no board
 > power is reported — the utilization law is offered as the software-only alternative. The CPU
 > governor was pinned (`performance`), so the law characterizes the fixed-frequency regime.
 
@@ -39,6 +46,16 @@ scripts/paper8_figs.py      regenerates the two figures
 figures/                    coupling_law.pdf, slope_consistency.pdf
 LICENSE                     MIT
 ```
+
+## State-of-the-art comparison (revision)
+
+`scripts/paper8_sota_comparison.py` evaluates the standard temperature-prediction structures on
+this dataset under the same leave-one-block-out protocol as the law: a HotSpot-class lumped RC
+model driven by utilization, AR(1)/ARX forecasters on the temperature sensor, a multi-signal
+static regression, and an EWMA-filtered law. Result (mean held-out RMSE): every sensor-free,
+actuatable structure lands in the same 1.6-1.8 degC band as the two-constant law, while
+sensor-feedback forecasters are ~2.7x tighter at one 200 ms step but cannot predict the effect of
+an allocation change. Summary table: `data/sota_comparison_summary.csv`.
 
 ## Reproduce
 ```bash
