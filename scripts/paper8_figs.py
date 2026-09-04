@@ -54,7 +54,7 @@ ax2.errorbar([s[0] for s in slopes],ys,xerr=[s[1] for s in slopes],fmt="o",
 ax2.axvline(sl,color="#c05621",ls="--",lw=1.2,label=f"global {sl:.3f}")
 ax2.set_yticks(ys); ax2.set_yticklabels(labels,fontsize=7)
 ax2.set_xlabel("coupling slope b (°C/%)")
-ax2.set_title("Slope consistency across blocks",fontsize=9)
+ax2.set_title("Per-block slope estimates",fontsize=9)
 ax2.legend(fontsize=7); ax2.spines[["top","right"]].set_visible(False)
 fig2.tight_layout(); fig2.savefig(os.path.join(OUT,"slope_consistency.pdf"),bbox_inches="tight")
 fig2.savefig(os.path.join(OUT,"slope_consistency.png"),bbox_inches="tight",dpi=150)
