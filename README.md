@@ -65,7 +65,7 @@ python scripts/paper8_figs.py   # the figures
 ```
 
 ## Citation
-Manu Nicholas Jacob, IEEE Embedded Systems Letters, 2026. MIT License.
+See `CITATION.cff` (artifact DOI 10.5281/zenodo.21844859). The manuscript is under review at IEEE Embedded Systems Letters. MIT License.
 
 ## Archived version
 
