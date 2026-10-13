@@ -1,5 +1,6 @@
 {
   "title": "A Software-Only Thermal Proxy for Edge AI Inference on Raspberry Pi 5",
+  "description": "Reproducible artifact for CPU Utilization as a Software-Only Thermal Proxy for Multi-Tenant Edge AI Inference (under review): a 13-hour telemetry campaign on a Raspberry Pi 5 (Arm Cortex-A76) and a cross-validated coupling law between CPU utilization and SoC temperature. Includes the de-duplicated telemetry (Parquet, 5 Hz), the fitting scripts and the figures.",
   "upload_type": "software",
   "license": "mit",
   "access_right": "open",
