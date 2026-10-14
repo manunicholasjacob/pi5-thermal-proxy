@@ -1,5 +1,6 @@
 # A Software-Only Thermal Proxy for Edge AI Inference (Raspberry Pi 5)
 
+[![reproduce](https://github.com/manunicholasjacob/pi5-thermal-proxy/actions/workflows/reproduce.yml/badge.svg)](https://github.com/manunicholasjacob/pi5-thermal-proxy/actions/workflows/reproduce.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21844859.svg)](https://doi.org/10.5281/zenodo.21844859)
 
 Reproducible artifact for **"CPU Utilization as a Software-Only Thermal Proxy for Multi-Tenant
@@ -9,7 +10,7 @@ Edge AI Inference: A 13-Hour Characterization and Coupling Law on Raspberry Pi 5
 ## Summary
 Thermal-aware control of edge inference usually assumes an instrumented power sensor, which most
 deployed single-board computers lack. From a 13-hour measurement campaign on Raspberry Pi 5
-(Arm Cortex-A76), we show that CPU utilization alone — a fully software-observable signal —
+(Arm Cortex-A76), we show that CPU utilization alone, a fully software-observable signal,
 predicts SoC temperature through a compact, cross-validated coupling law:
 
 ```
@@ -23,7 +24,8 @@ control with no power instrumentation.
 ## Dataset
 `data/` contains the de-duplicated real telemetry (Apache Parquet, 5 Hz), one collector file per
 experiment block: single-workload characterization, load sweep, two-tenant concurrency, and a
-6-hour stability run. Columns include SoC temperature, per-core CPU utilization, and memory.
+6-hour stability run. Columns include SoC temperature, whole-CPU utilization (one value for all four cores) and memory;
+the full column dictionary is [`data/README.md`](data/README.md).
 
 > **Data revision (Sep 2026).** Earlier versions of these Parquet files carried
 > `voltage_v`/`current_a`/`power_w` columns written by the collector as placeholders: no power
@@ -33,7 +35,7 @@ experiment block: single-workload characterization, load sweep, two-tenant concu
 > be mistaken for a power measurement. No analysis in the paper ever used them.
 >
 > Scope note (stated in the paper): this deployment read **no power sensor**, so no board
-> power is reported — the utilization law is offered as the software-only alternative. The CPU
+> power is reported; the utilization law is offered as the software-only alternative. The CPU
 > governor was pinned (`performance`), so the law characterizes the fixed-frequency regime.
 
 ## Contents
@@ -59,7 +61,8 @@ an allocation change. Summary table: `data/sota_comparison_summary.csv`.
 
 ## Reproduce
 ```bash
-pip install pandas pyarrow numpy scipy matplotlib
+pip install -r requirements.txt
+python scripts/check_headline.py   # README headline numbers, fails on drift
 python scripts/paper8_deep.py   # every number in the paper
 python scripts/paper8_figs.py   # the figures
 ```

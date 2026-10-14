@@ -1,0 +1,25 @@
+name: reproduce
+
+# Recompute the README headline numbers from the released telemetry in data/ and fail on drift.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  headline:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Coupling law, CI, sample count and campaign length match the README
+        run: python scripts/check_headline.py
+      - name: The full analysis still runs end to end
+        run: python scripts/paper8_deep.py

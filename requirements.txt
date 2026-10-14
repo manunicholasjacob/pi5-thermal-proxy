@@ -1,0 +1,6 @@
+# Pinned versions; check_headline.py passed with these locally (Python 3.14) on 14 Oct 2026. CI uses Python 3.12.
+numpy==2.5.4
+pandas==3.0.6
+pyarrow==26.0.0
+scipy==1.18.1
+matplotlib==3.11.2
